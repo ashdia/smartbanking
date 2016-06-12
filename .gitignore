@@ -57,4 +57,3 @@ ios
 .gitattributes
 .editorconfig
 npm-debug.log
-dist/
