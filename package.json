@@ -72,7 +72,6 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "1.0.3",
     "superagent": "1.7.1",
-    "webpack": "1.12.12",
-    "webpack-dev-server": "1.14.1"
+    "whatwg-fetch": "^0.11.0"   
   }
 }
