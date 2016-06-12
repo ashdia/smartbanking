@@ -2,13 +2,13 @@
   "name": "smart-banking",
   "version": "0.0.0",
   "scripts": {
+    "clean": "rimraf production\\dist",
     "build": "webpack --progress --verbose --colors --display-error-details --config webpack.production.config.js",
-    "build:production": "npm run clean && npm run build",
+    "build:production": "npm run clean && npm run lint && npm run build",
     "build:dev": "webpack --progress --verbose --colors --display-error-details --config webpack.config.js",
-    "start": "node server.js",
-    "clean": "rimraf dist",
-    "ci-build": "npm run clean && npm run lint && npm run build"    
+    "start": "node server.js"
   },
+
   "devDependencies": {
     "autoprefixer": "6.2.3",
     "babel-core": "6.3.26",

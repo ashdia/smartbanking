@@ -57,3 +57,4 @@ ios
 .gitattributes
 .editorconfig
 npm-debug.log
+production/node_modules/
