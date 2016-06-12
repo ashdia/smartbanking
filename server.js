@@ -1,6 +1,6 @@
-var WebpackDevServer = require('webpack-dev-server'),
-  config = require('./webpack.config');
-  webpack = require('webpack');
+var webpack = require('webpack'),
+	WebpackDevServer = require('webpack-dev-server'),
+  	config = require('./webpack.config');
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
