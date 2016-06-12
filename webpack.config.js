@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const postcssImport = require('postcss-import');
 
 const ui = {
   protocol: process.env.UI_PROTOCOL || 'http',
@@ -61,6 +63,9 @@ module.exports = {
       loaders: ['react-hot', 'babel-loader'],
       exclude: [/node_modules/, /webpack_loaders/]
     }, {
+      test: /\.js$/,
+      loader: 'eslint-loader'
+    }, {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style-loader', 'css')
     }, {
@@ -70,8 +75,26 @@ module.exports = {
       test: /\.(png|jpg|gif|ico)$/,
       loader: 'url-loader?limit=8192'
     }, {
+      test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+      loader: 'file-loader'
+    }, {
       test: /\.properties/,
       loader: 'locale-loader'
     }]
+  },
+
+  postcss: (webpack) => {
+    return [
+      autoprefixer({
+        browsers: ['last 2 versions']
+      }),
+      postcssImport({
+        addDependencyTo: webpack
+      })
+    ];
+  },
+
+  eslint: {
+    configFile: '.eslintrc'
   }
 };

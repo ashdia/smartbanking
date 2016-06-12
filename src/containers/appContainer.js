@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 @connect(
 	state => ({
 		routing: state.routing,
-		appHeader: state.appHeader,
+		appHeader: state.appHeader
 	})
 )
 

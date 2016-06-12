@@ -1,5 +1,4 @@
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const postcssImport = require('postcss-import');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -57,7 +56,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.DefinePlugin({
-      __DEVELOPMENT__: false
+      __DEVELOPMENT__: false,
       'process.env': {
         NODE_ENV: '"production"',
       }
