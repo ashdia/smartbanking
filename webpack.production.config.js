@@ -35,7 +35,9 @@ module.exports = {
 		'redux-form',
     'redux-logger',
     'redux-promise',
-		'redux-thunk'
+		'redux-thunk',
+    'webpack',
+    'webpack-dev-server'
 		]
   },
   output: {
