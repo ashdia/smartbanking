@@ -1,20 +1,43 @@
 const path = require('path');
+const autoprefixer = require('autoprefixer');
+const postcssImport = require('postcss-import');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ui = {
   protocol: process.env.UI_PROTOCOL || 'http',
-  host: process.env.UI_HOST || '0.0.0.0',
-  port: process.env.PORT || process.env.UI_PORT || 1234
+  host: process.env.UI_HOST || 'localhost',
+  port: process.env.UI_PORT || 1234
 };
 
 module.exports = {
   entry: {
     app: [
-      'webpack-hot-middleware/client',
       './src/index.js'
-    ]
+    ],
+	vendor: [
+		'babel-polyfill',
+		'classnames',
+		'intl',
+		'lodash',
+		'moment',
+		'react',
+		'redux',
+    'react-bootstrap',
+    'react-copy-to-clipboard',
+    'react-dom',
+    'react-infinite',
+    'react-intl',
+    'react-list',
+    'react-redux',
+    'react-router',
+    'react-router-redux',
+		'redux-form',
+    'redux-logger',
+    'redux-promise',
+		'redux-thunk'
+		]
   },
   output: {
     filename: '[name].bundle.js',
@@ -24,7 +47,7 @@ module.exports = {
 
   resolve: {
     extensions: ['', '.js', '.scss', '.css'],
-    modulesDirectories: ['node_modules', 'src']
+    modulesDirectories: ['node_modules', 'src'],
   },
 
   resolveLoader: {
@@ -32,10 +55,11 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.DefinePlugin({
-      __DEVELOPMENT__: true,
+      __DEVELOPMENT__: false
       'process.env': {
-        NODE_ENV: '"development"'
+        NODE_ENV: '"production"',
       }
     }),
     new webpack.ProvidePlugin({
@@ -44,13 +68,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html',
       cdn: path.join(__dirname, '/src/'),
-      chunks: ['app'],
-      favicon: './src/styles/icons/favicon.png'
+      chunks: ['vendor', 'app']
     }),
-    new ExtractTextPlugin('[name].bundle.css'),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.optimize.DedupePlugin(),
+    new ExtractTextPlugin('[name].bundle.css'),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      }
+    })
   ],
 
   ui: ui,
@@ -58,8 +85,11 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['react-hot', 'babel-loader'],
+      loaders: ['babel-loader'],
       exclude: [/node_modules/, /webpack_loaders/]
+    }, {
+      test: /\.js$/,
+      loader: 'eslint-loader'
     }, {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style-loader', 'css')
@@ -69,6 +99,9 @@ module.exports = {
     }, {
       test: /\.(png|jpg|gif|ico)$/,
       loader: 'url-loader?limit=8192'
+    }, {
+      test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+      loader: 'file-loader'
     }, {
       test: /\.properties/,
       loader: 'locale-loader'
