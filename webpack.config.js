@@ -1,0 +1,79 @@
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var pkg = require('./package.json');
+
+const ui = {
+  protocol: process.env.UI_PROTOCOL || 'http',
+  host: process.env.UI_HOST || '0.0.0.0',
+  port: process.env.PORT || process.env.UI_PORT || 1234
+};
+
+module.exports = {
+  entry: {
+    app: [
+      'webpack-hot-middleware/client',
+      './src/index.js'
+    ]
+  },
+  output: {
+    filename: '[name].bundle.js',
+    path: path.join(__dirname, '/dist/'),
+    publicPath: '/'
+  },
+
+  resolve: {
+    extensions: ['', '.js', '.scss', '.css'],
+    modulesDirectories: ['node_modules', 'src']
+  },
+
+  resolveLoader: {
+    modulesDirectories: ['web_loaders', 'web_modules', 'node_loaders', 'node_modules', 'webpack_loaders']
+  },
+
+  plugins: [
+    new webpack.DefinePlugin({
+      __DEVELOPMENT__: true,
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
+    }),
+    new webpack.ProvidePlugin({
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    }),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      cdn: path.join(__dirname, '/src/'),
+      chunks: ['app'],
+      favicon: './src/styles/icons/favicon.png'
+    }),
+    new ExtractTextPlugin('[name].bundle.css'),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
+
+  ui: ui,
+
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['react-hot', 'babel-loader'],
+      exclude: [/node_modules/, /webpack_loaders/]
+    }, {
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract('style-loader', 'css')
+    }, {
+      test: /\.scss$/,
+      loader: ExtractTextPlugin.extract('style-loader', 'css!postcss!sass')
+    }, {
+      test: /\.(png|jpg|gif|ico)$/,
+      loader: 'url-loader?limit=8192'
+    }, {
+      test: /\.properties/,
+      loader: 'locale-loader'
+    }]
+  }
+};

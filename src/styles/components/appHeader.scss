@@ -1,0 +1,19 @@
+.c-app-header-container {
+	position: static;
+	display: flex;
+	justify-content: center;
+	border-bottom: 1px solid grey;
+	text-align: center;
+
+	&-tabs {
+		display: flex;
+		flex-direction: row;
+
+		div {
+			padding: 1rem;
+			background-color: orange;
+			border-left: 1px solid white;
+			border-right: 1px solid white;			  
+		}
+	}
+}
