@@ -67,7 +67,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html',
       cdn: path.join(__dirname, '/src/'),
-      chunks: ['vendor', 'app']
+      chunks: ['vendor', 'app'],
+      favicon: './src/styles/icons/favicon.png'      
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
