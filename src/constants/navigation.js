@@ -1,5 +1,11 @@
 export const NAVIGATION = {
-	HOME: {
+	INDEX: {
 		LINK: '/'
+	},
+	HOME: {
+		LINK: '/home'
+	},
+	LOGIN: {
+		LINK: '/login'
 	}
 };

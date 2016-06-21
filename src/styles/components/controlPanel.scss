@@ -1,0 +1,23 @@
+@import '../constants';
+
+.c-control-panel {
+	width: 15rem;
+	background-color: $Grey90;
+	padding: 0.7rem;
+	height: 100%;
+
+	.c-control-panel-user {
+		color: $Grey30;
+		margin-top: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	.c-control-panel-item {
+		background-color: $Grey80;
+		color: $White;
+		padding: 0.8rem;
+		font-size: 0.9rem;
+		border-bottom: 1px solid $Grey60;
+		cursor: pointer;
+	}
+}

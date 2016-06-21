@@ -75,7 +75,13 @@ module.exports = {
       test: /\.(png|jpg|gif|ico)$/,
       loader: 'url-loader?limit=8192'
     }, {
-      test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+      test: /\.svg$/,
+      loader: 'svg-sprite?' + JSON.stringify({
+        name: '[name]_[hash]',
+        prefixize: true
+      })
+    }, {
+      test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
       loader: 'file-loader'
     }, {
       test: /\.properties/,

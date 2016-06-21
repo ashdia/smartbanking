@@ -1,0 +1,31 @@
+@import '../constants';
+
+.Popover,
+.Popover-tip {
+    transition-duration: 0ms !important;
+}
+
+.c-popup-arrow {
+	.Popover-tip {
+		display: none !important;
+	}
+}
+
+.c-popup-item {
+	display: flex;
+    align-items: center;
+	height: 4rem;
+	font-size: $xSmall;
+	color: white;
+	padding: $xxSmall $large;
+	background-color: $Blue80;
+	border-top: 1px solid $Grey50;
+
+	&:hover {
+		background-color: $Blue60;
+	}
+}
+
+.c-popup-item-action {
+	cursor: pointer;
+}

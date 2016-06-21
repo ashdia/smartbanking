@@ -1,0 +1,28 @@
+@import '../constants';
+
+.c-search-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	// padding: 0.5rem $xxSmall;
+	font-size: 1.4rem;
+}
+
+.c-search-box-input {
+	height: 2rem;
+	width: 100%;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.c-search-box-icon {
+	fill: $Black;
+	font-size: 1.0rem;
+	margin-left: $xxSmall;
+}
+
+.c-contacts-panel-search-box {
+	width: 20rem;
+}

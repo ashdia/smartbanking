@@ -1,0 +1,27 @@
+@import '../constants';
+
+.c-add-contact-input-group,
+.c-add-contact-label-group {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 0.5rem;	
+}
+
+.c-add-contact-input-group {
+	margin-bottom: 1rem;
+}
+
+.c-add-contact-label {
+	width: 10rem;
+	margin-right: 0.6rem;
+}
+
+.c-add-contact-input {
+	margin-right: 0.6rem;
+	width: 10rem;
+
+	.c-text-input {
+		width: 10rem;
+		height: 30px;
+	}
+}

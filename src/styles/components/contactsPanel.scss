@@ -1,0 +1,26 @@
+@import '../constants';
+
+.contacts-panel {
+	.c-contacts-panel-header {
+		padding: 1rem;
+		border-bottom: 1px solid $Grey60;
+	}
+
+	.c-contacts-panel-content {
+		padding: 1rem;
+
+		.c-contacts-add-contact {
+			margin-bottom: 1rem;
+		}
+
+		.c-contacts-panel-table-header {
+			background-color: $Grey10;
+			border-right: 1px solid $Grey20;
+		}
+
+		.c-contacts-panel-table-header:last-child {
+			border-right: 0px;
+		}
+	}
+
+}

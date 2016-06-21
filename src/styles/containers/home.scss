@@ -1,0 +1,17 @@
+@import '../constants';
+
+.c-home {
+	.c-home-left {
+		position: absolute;
+		left: 0; 
+		top: 0;
+		bottom: 0;
+	}
+
+	.c-home-right {
+		position: absolute;
+		left: 16.4rem;
+		top: 0;
+		bottom: 0;
+	}
+}

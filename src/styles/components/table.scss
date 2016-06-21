@@ -1,0 +1,35 @@
+@import '../constants';
+
+.c-auto-table {
+	width: 100%;
+	clear: both;
+	border: 0.1rem solid $Grey30;
+
+	&-tbody {
+		height: auto;
+
+		.c-auto-table-tr:last-child {
+			border-bottom: none;
+		}
+	}
+
+	&-th {
+		color: $Blue50;
+		font-size: 1.2rem;
+	}
+
+	&-tr {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		overflow: hidden;
+		border-bottom: 0.1rem solid $Grey30;
+	}
+
+	&-th,
+	&-td {
+		flex: 1 1 12rem;
+		overflow: hidden;
+		padding: $xxSmall $small;
+	}
+}

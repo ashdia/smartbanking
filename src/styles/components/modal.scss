@@ -1,0 +1,48 @@
+@import '../constants';
+
+.c-dialog {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	.c-modal {
+		background-color: $White;
+		border: 1px solid $Grey30;
+		&-header {
+			padding: $xSmall 0;
+			margin: 0 $small;
+			border-bottom: 1px solid $Grey50;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			&-title {
+				flex-grow: 1;
+			}
+
+			&-close {
+				cursor: pointer;
+			}
+		}
+
+		&-body {
+			padding: $xSmall 0;
+			margin: 0 $small;
+		}
+
+		&-footer {
+			border-top: 0.1rem solid $Grey50;
+			padding: $xSmall 0;
+			margin: 0 $small;
+			text-align: right;
+			.c-button {
+				margin-left: $xSmall;
+			}
+		}
+	}
+}

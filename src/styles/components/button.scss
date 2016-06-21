@@ -1,0 +1,56 @@
+@import '../constants';
+
+
+.c-button {
+	display: inline-flex;
+	align-items: center;
+	flex-direction: row;
+	border: 1px solid $Grey20;
+	border-radius: 0.5rem;
+	padding: 0.3rem;
+	cursor: pointer;
+	font-weight: 300;
+	background-color: $White;
+
+	&-small {
+		height: rem;
+
+		.c-button-icon {
+			margin: 0 0.6rem;
+		}
+
+		.c-button-text {
+			font-size: 1.2rem;
+			line-height: 1.2rem;
+			padding: 0 0.6rem;
+		}
+	}
+
+	&-regular {
+		height: 2.4rem;
+
+		.c-button-icon {
+			margin: 0 1.0rem;
+		}
+
+		.c-button-text {
+			font-size: 1.4rem;
+			line-height: 1.5rem;
+			padding: 0 1.0rem;
+		}
+	}
+
+	&-large {
+		height: 3.0rem;
+
+		.c-button-icon {
+			margin: 0 1.6rem;
+		}
+
+		.c-button-text {
+			font-size: 1.6rem;
+			line-height: 2.0rem;
+			padding: 0 1.6rem;
+		}
+	}
+}

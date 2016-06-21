@@ -8,7 +8,7 @@
     "start": "node app.js",
     "clean": "rimraf dist",
     "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js",
-    "ci-build": "npm run clean && npm run lint && npm run build"    
+    "ci-build": "npm run clean && npm run lint && npm run build"
   },
   "devDependencies": {
     "autoprefixer": "6.2.3",
@@ -45,6 +45,8 @@
     "rimraf": "2.5.1",
     "sass-loader": "3.1.2",
     "style-loader": "0.13.0",
+    "svg-sprite-loader": "0.0.22",
+    "svgshelf": "^1.0.3",
     "url-loader": "0.5.7",
     "webpack": "1.12.12",
     "webpack-dev-middleware": "1.5.1",
@@ -53,8 +55,9 @@
   },
   "dependencies": {
     "babel-polyfill": "6.3.14",
-    "classnames": "2.2.3",
-    "express": "4.13.4",    
+    "classnames": "^2.2.3",
+    "express": "4.13.4",
+    "flexboxgrid": "^6.3.0",
     "intl": "1.1.0",
     "lodash": "4.0.0",
     "moment": "2.11.1",
@@ -65,15 +68,18 @@
     "react-infinite": "0.8.0",
     "react-intl": "2.0.0-pr-3",
     "react-list": "0.7.14",
+    "react-overlays": "^0.6.3",
+    "react-popover": "^0.4.4",
     "react-redux": "4.0.6",
     "react-router": "2.0.0-rc5",
     "react-router-redux": "2.1.0",
+    "react-select": "^1.0.0-beta13",
     "redux": "3.0.5",
     "redux-form": "4.1.6",
     "redux-logger": "2.3.1",
     "redux-promise": "^0.5.3",
     "redux-thunk": "1.0.3",
     "superagent": "1.7.1",
-    "whatwg-fetch": "^0.11.0"   
+    "whatwg-fetch": "^0.11.0"
   }
 }
