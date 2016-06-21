@@ -6,7 +6,7 @@ import '../styles/containers/login';
 
 export default class Login extends React.Component {
 	static propTypes = {
-		test: PropTypes.string
+		test: PropTypes.number
 	};
 
 	constructor(props, context) {
